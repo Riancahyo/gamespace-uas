@@ -1,0 +1,203 @@
+name: GameSpace CI Pipeline
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  build-and-test:
+    name: Build & Test (Ubuntu)
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout kode dari repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Setup Java (JDK 17) untuk backend Java
+      - name: Setup JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: maven
+
+      # 3. Setup PHP 8.3 + ekstensi untuk frontend PHP
+      - name: Setup PHP 8.3
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          extensions: curl, json, mbstring, xdebug
+          coverage: xdebug
+
+      # 4. Install dependensi PHP (PHPUnit, dsb.) via Composer
+      - name: Install PHP dependencies (Composer)
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      # 5. Siapkan seed data bersih sebelum tes dimulai
+      - name: Prepare seed data
+        run: |
+          # Pastikan orders.seed.json ada dan bersih
+          echo "[]" > data/orders.seed.json
+          # Reset orders.json ke kondisi bersih
+          echo "[]" > data/orders.json
+          # Verifikasi file data tersedia
+          ls -la data/
+
+      # 6. Kompilasi & jalankan backend Java di background (port 8080)
+      - name: Create logs directory
+        run: mkdir -p logs
+
+      - name: Compile Java backend
+        working-directory: backend
+        run: |
+          javac -cp . *.java
+          echo "Kompilasi backend berhasil"
+
+      - name: Start Java backend server (port 8080)
+        working-directory: backend
+        run: |
+          nohup java GameSpaceServer > ../logs/backend.log 2>&1 &
+          echo $! > ../backend.pid
+          echo "Backend PID: $(cat ../backend.pid)"
+
+      # Tunggu backend siap menerima koneksi
+      - name: Wait for Java backend to be ready
+        run: |
+          echo "Menunggu backend Java di port 8080..."
+          for i in $(seq 1 30); do
+            if curl -s http://localhost:8080/api/checkout > /dev/null 2>&1 || \
+               nc -z localhost 8080 2>/dev/null; then
+              echo "Backend siap setelah ${i}s"
+              break
+            fi
+            sleep 1
+          done
+
+      # 7. Jalankan web server PHP di background (port 8000)
+      - name: Start PHP web server (port 8000)
+        run: |
+          nohup php -S localhost:8000 -t frontend > logs/php-server.log 2>&1 &
+          echo $! > php-server.pid
+          echo "PHP Server PID: $(cat php-server.pid)"
+
+      # Tunggu PHP server siap
+      - name: Wait for PHP server to be ready
+        run: |
+          echo "Menunggu PHP server di port 8000..."
+          for i in $(seq 1 15); do
+            if curl -s http://localhost:8000/index.php > /dev/null 2>&1; then
+              echo "PHP server siap setelah ${i}s"
+              break
+            fi
+            sleep 1
+          done
+
+      # 8. Setup Google Chrome + Chromedriver untuk Selenium (headless)
+      - name: Setup Chrome & Chromedriver
+        uses: browser-actions/setup-chrome@v1
+        with:
+          chrome-version: stable
+
+      - name: Verify Chrome & Chromedriver versions
+        run: |
+          google-chrome --version
+          chromedriver --version
+
+      # 9. Jalankan Selenium/Chromedriver server di background
+      - name: Start Chromedriver server
+        run: |
+          nohup chromedriver --port=4444 > logs/chromedriver.log 2>&1 &
+          echo $! > chromedriver.pid
+          sleep 2
+          echo "Chromedriver berjalan di port 4444"
+
+      # 10. Jalankan UNIT TEST Java (JaCoCo coverage)
+      - name: Run Java Unit Tests + Coverage
+        working-directory: gamespace-test
+        run: mvn test -B
+
+      # 11. Jalankan INTEGRATION TEST PHP (PHPUnit)
+      - name: Run PHP Tests (Unit + Integration)
+        run: |
+          # Reset seed data sebelum PHP test
+          echo "[]" > data/orders.json
+          php vendor/bin/phpunit \
+            --configuration phpunit.xml \
+            --coverage-clover coverage-report/clover.xml
+
+      # 12. Periksa metrik coverage PHP (minimal 70%)
+      - name: Check PHP coverage threshold
+        run: |
+          # Ambil persentase coverage dari clover.xml
+          COVERAGE=$(php -r "
+            \$xml = simplexml_load_file('coverage-report/clover.xml');
+            \$metrics = \$xml->project->metrics;
+            \$covered = (int)\$metrics['coveredstatements'];
+            \$total   = (int)\$metrics['statements'];
+            echo \$total > 0 ? round(\$covered / \$total * 100, 2) : 0;
+          ")
+          echo "PHP Coverage: ${COVERAGE}%"
+          # Gagalkan build jika di bawah 70%
+          php -r "
+            \$c = (float)'${COVERAGE}';
+            if (\$c < 70) {
+              fwrite(STDERR, \"Coverage PHP \${c}% < 70% minimum. Build GAGAL.\n\");
+              exit(1);
+            }
+            echo \"Coverage OK: \${c}%\n\";
+          "
+
+      # 13. Periksa metrik coverage Java (JaCoCo enforcer sudah di pom.xml)
+      - name: Verify Java coverage (JaCoCo check)
+        working-directory: gamespace-test
+        run: mvn verify -B -DskipTests
+        # JaCoCo akan gagalkan build jika LINE/BRANCH coverage < 75%
+
+      # 14. Jalankan SYSTEM TEST / E2E (Selenium, profil ci)
+      - name: Reset seed data before E2E tests
+        run: echo "[]" > data/orders.json
+
+      - name: Run E2E / System Tests (Selenium)
+        working-directory: gamespace-test
+        env:
+          CI: "true"
+        run: |
+          mvn test -Pci -B \
+            -Dwebdriver.chrome.driver=$(which chromedriver)
+
+      # 15. Upload artefak laporan (selalu, meski build gagal)
+      - name: Upload Java coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: java-coverage-report
+          path: gamespace-test/target/site/jacoco/
+
+      - name: Upload PHP coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: php-coverage-report
+          path: coverage-report/
+
+      - name: Upload server logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: server-logs
+          path: logs/
+
+      # 16. Bersihkan proses background setelah semua tes selesai
+      - name: Cleanup background processes & temp data
+        if: always()
+        run: |
+          # Hentikan server-server background
+          [ -f backend.pid ]      && kill $(cat backend.pid)      2>/dev/null || true
+          [ -f php-server.pid ]   && kill $(cat php-server.pid)   2>/dev/null || true
+          [ -f chromedriver.pid ] && kill $(cat chromedriver.pid) 2>/dev/null || true
+          # Bersihkan transaksi sampah dari orders.json
+          echo "[]" > data/orders.json
+          echo "Cleanup selesai."
