@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true">
+
+    <testsuites>
+        <testsuite name="GameSpace PHP Tests">
+            <directory>tests/php</directory>
+        </testsuite>
+    </testsuites>
+
+    <source>
+        <include>
+            <directory>frontend</directory>
+        </include>
+        <exclude>
+            <!-- Tidak ada logika bisnis di file-file ini -->
+            <file>frontend/index.php</file>
+            <file>frontend/checkout.php</file>
+        </exclude>
+    </source>
+
+    <coverage>
+        <report>
+            <!-- Laporan HTML: buka coverage-report/index.html -->
+            <html outputDirectory="coverage-report"
+                  lowUpperBound="50"
+                  highLowerBound="90"/>
+            <!-- Laporan Clover XML (untuk CI) -->
+            <clover outputFile="coverage-report/clover.xml"/>
+            <!-- Laporan XML versi PHPUnit (butuh outputDirectory) -->
+            <xml outputDirectory="coverage-report/xml"/>
+            <!-- Ringkasan di terminal -->
+            <text outputFile="php://stdout" showUncoveredFiles="false"/>
+        </report>
+    </coverage>
+
+</phpunit>

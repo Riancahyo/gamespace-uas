@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <build time="Wed Jun 10 12:11:15 UTC 2026" phpunit="11.5.55" coverage="11.0.12">
+    <runtime name="PHP" version="8.3.9" url="https://www.php.net/"/>
+    <driver name="xdebug" version="3.5.1"/>
+  </build>
+  <project source="D:\Penjaminan Kualitas Perangkat Lunak\Projek UAS\GameSpace\frontend">
+    <tests>
+      <test name="CheckoutServiceTest::testValidateInput_valid" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testValidateInput_emptyUserId" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testValidateInput_emptyProductId" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testValidateInput_quantityZero" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testValidateInput_quantityNegative" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testValidateInput_quantityTooLarge" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testValidateInput_quantityExactly50_isValid" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testValidateInput_multipleErrors" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testBuildPayload_returnsValidJson" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testBuildPayload_quantityCastToInt" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testBuildPayload_missingKeysDefaultToEmpty" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testSendToBackend_mockSuccess" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testSendToBackend_mockServerError" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testSendToBackend_mockCurlFailure" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testSendToBackend_passesCorrectUrlToExecutor" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testSendToBackend_realCurl_toJavaServer" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testSanitizeCatatan_plainText" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testSanitizeCatatan_xssScript" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testSanitizeCatatan_htmlEntities" size="unknown" status="success"/>
+      <test name="CheckoutServiceTest::testSanitizeCatatan_emptyString" size="unknown" status="success"/>
+    </tests>
+    <directory name="/">
+      <totals>
+        <lines total="108" comments="35" code="73" executable="35" executed="35" percent="100.00"/>
+        <methods count="5" tested="5" percent="100.00"/>
+        <functions count="0" tested="0" percent="0"/>
+        <classes count="1" tested="1" percent="100.00"/>
+        <traits count="0" tested="0" percent="0"/>
+      </totals>
+      <file name="CheckoutService.php" href="CheckoutService.php.xml">
+        <totals>
+          <lines total="108" comments="35" code="73" executable="35" executed="35" percent="100.00"/>
+          <methods count="5" tested="5" percent="100.00"/>
+          <functions count="0" tested="0" percent="0"/>
+          <classes count="1" tested="1" percent="100.00"/>
+          <traits count="0" tested="0" percent="0"/>
+        </totals>
+      </file>
+    </directory>
+  </project>
+</phpunit>

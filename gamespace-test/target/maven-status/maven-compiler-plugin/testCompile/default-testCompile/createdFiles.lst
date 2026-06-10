@@ -1,0 +1,4 @@
+com\gamespace\e2e\CheckoutE2ETest.class
+com\gamespace\unit\DiscountCalculatorTest.class
+com\gamespace\unit\JsonFileTest.class
+com\gamespace\unit\JsonFileUtilTest.class

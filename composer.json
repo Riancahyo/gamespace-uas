@@ -1,0 +1,23 @@
+{
+    "name": "gamespace/gamespace",
+    "description": "GameSpace Voucher App PHP Tests",
+    "type": "project",
+    "require": {
+        "php-webdriver/webdriver": "^1.16"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.5"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/php/"
+        }
+    },
+    "scripts": {
+        "test": "XDEBUG_MODE=coverage php vendor/bin/phpunit",
+        "test:no-coverage": "php vendor/bin/phpunit --no-coverage"
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}

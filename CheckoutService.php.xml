@@ -1,0 +1,856 @@
+<?xml version="1.0"?>
+<phpunit xmlns="https://schema.phpunit.de/coverage/1.0">
+  <file name="CheckoutService.php" path="\">
+    <totals>
+      <lines total="95" comments="26" code="69" executable="33" executed="20" percent="60.61"/>
+      <methods count="5" tested="4" percent="80.00"/>
+      <functions count="0" tested="0" percent="0"/>
+      <classes count="1" tested="0" percent="0.00"/>
+      <traits count="0" tested="0" percent="0"/>
+    </totals>
+    <class name="CheckoutService" start="3" executable="33" executed="20" crap="18.4">
+      <namespace name=""/>
+      <method name="__construct" signature="__construct(string $backendUrl)" start="8" end="11" crap="1" executable="1" executed="1" coverage="100"/>
+      <method name="validateInput" signature="validateInput(array $post): array" start="19" end="40" crap="6" executable="12" executed="12" coverage="100"/>
+      <method name="buildPayload" signature="buildPayload(array $post): string" start="48" end="57" crap="1" executable="6" executed="6" coverage="100"/>
+      <method name="sendToBackend" signature="sendToBackend(string $payload): array" start="65" end="82" crap="6" executable="13" executed="0" coverage="0"/>
+      <method name="sanitizeCatatan" signature="sanitizeCatatan(string $catatan): string" start="91" end="94" crap="1" executable="1" executed="1" coverage="100"/>
+    </class>
+    <coverage>
+      <line nr="10">
+        <covered by="CheckoutServiceTest::testValidateInput_valid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyUserId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyProductId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityZero"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityNegative"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityTooLarge"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityExactly50_isValid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_multipleErrors"/>
+        <covered by="CheckoutServiceTest::testBuildPayload_returnsValidJson"/>
+        <covered by="CheckoutServiceTest::testBuildPayload_quantityCastToInt"/>
+        <covered by="CheckoutServiceTest::testBuildPayload_missingKeysDefaultToEmpty"/>
+        <covered by="CheckoutServiceTest::testSanitizeCatatan_plainText"/>
+        <covered by="CheckoutServiceTest::testSanitizeCatatan_xssScript"/>
+        <covered by="CheckoutServiceTest::testSanitizeCatatan_htmlEntities"/>
+        <covered by="CheckoutServiceTest::testSanitizeCatatan_emptyString"/>
+      </line>
+      <line nr="21">
+        <covered by="CheckoutServiceTest::testValidateInput_valid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyUserId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyProductId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityZero"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityNegative"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityTooLarge"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityExactly50_isValid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_multipleErrors"/>
+      </line>
+      <line nr="23">
+        <covered by="CheckoutServiceTest::testValidateInput_valid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyUserId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyProductId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityZero"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityNegative"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityTooLarge"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityExactly50_isValid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_multipleErrors"/>
+      </line>
+      <line nr="24">
+        <covered by="CheckoutServiceTest::testValidateInput_emptyUserId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_multipleErrors"/>
+      </line>
+      <line nr="27">
+        <covered by="CheckoutServiceTest::testValidateInput_valid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyUserId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyProductId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityZero"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityNegative"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityTooLarge"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityExactly50_isValid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_multipleErrors"/>
+      </line>
+      <line nr="28">
+        <covered by="CheckoutServiceTest::testValidateInput_emptyProductId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_multipleErrors"/>
+      </line>
+      <line nr="31">
+        <covered by="CheckoutServiceTest::testValidateInput_valid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyUserId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyProductId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityZero"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityNegative"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityTooLarge"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityExactly50_isValid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_multipleErrors"/>
+      </line>
+      <line nr="32">
+        <covered by="CheckoutServiceTest::testValidateInput_valid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyUserId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyProductId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityZero"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityNegative"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityTooLarge"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityExactly50_isValid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_multipleErrors"/>
+      </line>
+      <line nr="33">
+        <covered by="CheckoutServiceTest::testValidateInput_quantityZero"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityNegative"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityTooLarge"/>
+        <covered by="CheckoutServiceTest::testValidateInput_multipleErrors"/>
+      </line>
+      <line nr="37">
+        <covered by="CheckoutServiceTest::testValidateInput_valid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyUserId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyProductId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityZero"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityNegative"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityTooLarge"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityExactly50_isValid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_multipleErrors"/>
+      </line>
+      <line nr="38">
+        <covered by="CheckoutServiceTest::testValidateInput_valid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyUserId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyProductId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityZero"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityNegative"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityTooLarge"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityExactly50_isValid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_multipleErrors"/>
+      </line>
+      <line nr="50">
+        <covered by="CheckoutServiceTest::testBuildPayload_returnsValidJson"/>
+        <covered by="CheckoutServiceTest::testBuildPayload_quantityCastToInt"/>
+        <covered by="CheckoutServiceTest::testBuildPayload_missingKeysDefaultToEmpty"/>
+      </line>
+      <line nr="51">
+        <covered by="CheckoutServiceTest::testBuildPayload_returnsValidJson"/>
+        <covered by="CheckoutServiceTest::testBuildPayload_quantityCastToInt"/>
+        <covered by="CheckoutServiceTest::testBuildPayload_missingKeysDefaultToEmpty"/>
+      </line>
+      <line nr="52">
+        <covered by="CheckoutServiceTest::testBuildPayload_returnsValidJson"/>
+        <covered by="CheckoutServiceTest::testBuildPayload_quantityCastToInt"/>
+        <covered by="CheckoutServiceTest::testBuildPayload_missingKeysDefaultToEmpty"/>
+      </line>
+      <line nr="53">
+        <covered by="CheckoutServiceTest::testBuildPayload_returnsValidJson"/>
+        <covered by="CheckoutServiceTest::testBuildPayload_quantityCastToInt"/>
+        <covered by="CheckoutServiceTest::testBuildPayload_missingKeysDefaultToEmpty"/>
+      </line>
+      <line nr="56">
+        <covered by="CheckoutServiceTest::testBuildPayload_returnsValidJson"/>
+        <covered by="CheckoutServiceTest::testBuildPayload_quantityCastToInt"/>
+        <covered by="CheckoutServiceTest::testBuildPayload_missingKeysDefaultToEmpty"/>
+      </line>
+      <line nr="93">
+        <covered by="CheckoutServiceTest::testSanitizeCatatan_plainText"/>
+        <covered by="CheckoutServiceTest::testSanitizeCatatan_xssScript"/>
+        <covered by="CheckoutServiceTest::testSanitizeCatatan_htmlEntities"/>
+        <covered by="CheckoutServiceTest::testSanitizeCatatan_emptyString"/>
+      </line>
+      <line nr="36">
+        <covered by="CheckoutServiceTest::testValidateInput_valid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyUserId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyProductId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityZero"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityNegative"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityTooLarge"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityExactly50_isValid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_multipleErrors"/>
+      </line>
+      <line nr="39">
+        <covered by="CheckoutServiceTest::testValidateInput_valid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyUserId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_emptyProductId"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityZero"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityNegative"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityTooLarge"/>
+        <covered by="CheckoutServiceTest::testValidateInput_quantityExactly50_isValid"/>
+        <covered by="CheckoutServiceTest::testValidateInput_multipleErrors"/>
+      </line>
+      <line nr="54">
+        <covered by="CheckoutServiceTest::testBuildPayload_returnsValidJson"/>
+        <covered by="CheckoutServiceTest::testBuildPayload_quantityCastToInt"/>
+        <covered by="CheckoutServiceTest::testBuildPayload_missingKeysDefaultToEmpty"/>
+      </line>
+    </coverage>
+    <source>
+      <line no="1">
+        <token name="T_OPEN_TAG">&lt;?php</token>
+      </line>
+      <line no="2"/>
+      <line no="3">
+        <token name="T_CLASS">class</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">CheckoutService</token>
+      </line>
+      <line no="4">
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="5">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_DOC_COMMENT">/** URL backend Java engine */</token>
+      </line>
+      <line no="6">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PRIVATE">private</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$backendUrl</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="7"/>
+      <line no="8">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">__construct</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$backendUrl</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'http://localhost:8080/api/checkout'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+      </line>
+      <line no="9">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="10">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">backendUrl</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$backendUrl</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="11">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="12"/>
+      <line no="13">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_DOC_COMMENT">/**</token>
+      </line>
+      <line no="14">
+        <token name="T_DOC_COMMENT">     * Validasi input dari form sebelum dikirim ke backend.</token>
+      </line>
+      <line no="15">
+        <token name="T_DOC_COMMENT">     *</token>
+      </line>
+      <line no="16">
+        <token name="T_DOC_COMMENT">     * @param  array $post  Array berisi userId, productId, quantity, catatan</token>
+      </line>
+      <line no="17">
+        <token name="T_DOC_COMMENT">     * @return array{valid: bool, errors: string[]}</token>
+      </line>
+      <line no="18">
+        <token name="T_DOC_COMMENT">     */</token>
+      </line>
+      <line no="19">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">validateInput</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_ARRAY">array</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$post</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ARRAY">array</token>
+      </line>
+      <line no="20">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="21">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$errors</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="22"/>
+      <line no="23">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_EMPTY">empty</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$post</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'userId'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="24">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$errors</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'userId tidak boleh kosong.'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="25">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="26"/>
+      <line no="27">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_EMPTY">empty</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$post</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'productId'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="28">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$errors</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'productId tidak boleh kosong.'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="29">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="30"/>
+      <line no="31">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$qty</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ISSET">isset</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$post</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'quantity'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_INT_CAST">(int)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$post</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'quantity'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">0</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="32">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_IF">if</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$qty</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_IS_SMALLER_OR_EQUAL">&lt;=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">0</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_BOOLEAN_OR">||</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$qty</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_GT">&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">50</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="33">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_VARIABLE">$errors</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Kuantitas harus antara 1 hingga 50.'</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="34">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="35"/>
+      <line no="36">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+      </line>
+      <line no="37">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'valid'</token>
+        <token name="T_WHITESPACE">  </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EMPTY">empty</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$errors</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="38">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'errors'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$errors</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="39">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="40">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="41"/>
+      <line no="42">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_DOC_COMMENT">/**</token>
+      </line>
+      <line no="43">
+        <token name="T_DOC_COMMENT">     * Bangun payload JSON yang akan dikirim ke backend Java.</token>
+      </line>
+      <line no="44">
+        <token name="T_DOC_COMMENT">     *</token>
+      </line>
+      <line no="45">
+        <token name="T_DOC_COMMENT">     * @param  array $post</token>
+      </line>
+      <line no="46">
+        <token name="T_DOC_COMMENT">     * @return string  JSON string</token>
+      </line>
+      <line no="47">
+        <token name="T_DOC_COMMENT">     */</token>
+      </line>
+      <line no="48">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">buildPayload</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_ARRAY">array</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$post</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+      </line>
+      <line no="49">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="50">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$data</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+      </line>
+      <line no="51">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'userId'</token>
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$post</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'userId'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_COALESCE">??</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="52">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'productId'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$post</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'productId'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COALESCE">??</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="53">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'quantity'</token>
+        <token name="T_WHITESPACE">  </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_INT_CAST">(int)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$post</token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'quantity'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COALESCE">??</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">0</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="54">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="55"/>
+      <line no="56">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">json_encode</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$data</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="57">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="58"/>
+      <line no="59">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_DOC_COMMENT">/**</token>
+      </line>
+      <line no="60">
+        <token name="T_DOC_COMMENT">     * Kirim request POST ke backend Java via cURL.</token>
+      </line>
+      <line no="61">
+        <token name="T_DOC_COMMENT">     *</token>
+      </line>
+      <line no="62">
+        <token name="T_DOC_COMMENT">     * @param  string $payload  JSON string</token>
+      </line>
+      <line no="63">
+        <token name="T_DOC_COMMENT">     * @return array{httpCode: int, body: string}</token>
+      </line>
+      <line no="64">
+        <token name="T_DOC_COMMENT">     */</token>
+      </line>
+      <line no="65">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">sendToBackend</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$payload</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_ARRAY">array</token>
+      </line>
+      <line no="66">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="67">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$ch</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">curl_init</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$this</token>
+        <token name="T_OBJECT_OPERATOR">-&gt;</token>
+        <token name="T_STRING">backendUrl</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="68">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_STRING">curl_setopt</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$ch</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">CURLOPT_RETURNTRANSFER</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">true</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="69">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_STRING">curl_setopt</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$ch</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">CURLOPT_POST</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">true</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="70">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_STRING">curl_setopt</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$ch</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">CURLOPT_POSTFIELDS</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$payload</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="71">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_STRING">curl_setopt</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$ch</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">CURLOPT_HTTPHEADER</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'Content-Type: application/json'</token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="72">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_STRING">curl_setopt</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$ch</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">CURLOPT_TIMEOUT</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_LNUMBER">5</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="73"/>
+      <line no="74">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$body</token>
+        <token name="T_WHITESPACE">     </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">curl_exec</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$ch</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="75">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_VARIABLE">$httpCode</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_EQUAL">=</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_INT_CAST">(int)</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">curl_getinfo</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$ch</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">CURLINFO_HTTP_CODE</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="76">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_STRING">curl_close</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$ch</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="77"/>
+      <line no="78">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_OPEN_SQUARE">[</token>
+      </line>
+      <line no="79">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'httpCode'</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$httpCode</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="80">
+        <token name="T_WHITESPACE">            </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'body'</token>
+        <token name="T_WHITESPACE">     </token>
+        <token name="T_DOUBLE_ARROW">=&gt;</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$body</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_IS_NOT_IDENTICAL">!==</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">false</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_QUESTION_MARK">?</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$body</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">''</token>
+        <token name="T_COMMA">,</token>
+      </line>
+      <line no="81">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_CLOSE_SQUARE">]</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="82">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="83"/>
+      <line no="84">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_DOC_COMMENT">/**</token>
+      </line>
+      <line no="85">
+        <token name="T_DOC_COMMENT">     * Sanitasi catatan pembeli agar aman ditampilkan di HTML.</token>
+      </line>
+      <line no="86">
+        <token name="T_DOC_COMMENT">     * Mencegah XSS.</token>
+      </line>
+      <line no="87">
+        <token name="T_DOC_COMMENT">     *</token>
+      </line>
+      <line no="88">
+        <token name="T_DOC_COMMENT">     * @param  string $catatan</token>
+      </line>
+      <line no="89">
+        <token name="T_DOC_COMMENT">     * @return string</token>
+      </line>
+      <line no="90">
+        <token name="T_DOC_COMMENT">     */</token>
+      </line>
+      <line no="91">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_PUBLIC">public</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_FUNCTION">function</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">sanitizeCatatan</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_STRING">string</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_VARIABLE">$catatan</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_COLON">:</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">string</token>
+      </line>
+      <line no="92">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_OPEN_CURLY">{</token>
+      </line>
+      <line no="93">
+        <token name="T_WHITESPACE">        </token>
+        <token name="T_RETURN">return</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">htmlspecialchars</token>
+        <token name="T_OPEN_BRACKET">(</token>
+        <token name="T_VARIABLE">$catatan</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_STRING">ENT_QUOTES</token>
+        <token name="T_COMMA">,</token>
+        <token name="T_WHITESPACE"> </token>
+        <token name="T_CONSTANT_ENCAPSED_STRING">'UTF-8'</token>
+        <token name="T_CLOSE_BRACKET">)</token>
+        <token name="T_SEMICOLON">;</token>
+      </line>
+      <line no="94">
+        <token name="T_WHITESPACE">    </token>
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+      <line no="95">
+        <token name="T_CLOSE_CURLY">}</token>
+      </line>
+    </source>
+  </file>
+</phpunit>

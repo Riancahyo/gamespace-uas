@@ -1,0 +1,1 @@
+{"version":2,"defects":[],"times":{"CheckoutTest::testPayloadCreation":0.008,"CheckoutTest::testApiEndpoint":0.001,"CheckoutTest::testContentTypeHeader":0.002,"CheckoutIntegrationTest::testCheckoutApi":0.047,"CheckoutTest::testCheckoutApiReturnsSuccess":0.044}}
